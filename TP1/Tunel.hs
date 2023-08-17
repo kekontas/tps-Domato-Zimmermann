@@ -1,5 +1,7 @@
 module Tunel ( Tunel, newT, connectsT, usesT, delayT )
    where
+import City 
+import Link 
 
 data Tunel = Tun [Link] deriving (Eq, Show)
 
