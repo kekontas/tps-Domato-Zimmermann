@@ -11,7 +11,7 @@ connectsL :: City -> Link -> Bool   -- indica si esta ciudad es parte de este li
 connectsL c1 (Lin c2 c3 q) = (c1 == c2) || (c1 == c3)
 
 linksL :: City -> City -> Link -> Bool -- indica si estas dos ciudades distintas estan conectadas mediante este link
-linksL c1 c2 (Lin c3 c4 q) = (c1 == c3 || c1 == c4) && (c2 == c3 || c2 == c4)
+linksL c1 c2 (Lin c3 c4 _) = (c1 == c3 || c1 == c4) && (c2 == c3 || c2 == c4)
 
 capacityL :: Link -> Int
 capacityL (Lin c1 c2 q) = capacityQ q
