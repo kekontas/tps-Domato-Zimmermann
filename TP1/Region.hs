@@ -6,21 +6,13 @@ import Tunel
 
 data Region = Reg [City] [Link] [Tunel]
 newR :: Region
-newR c1 (Lin c1 c2 q) tunel = Reg [c1] [Lin c1 c2 q] [tunel] 
+newR city link tunel = Reg [city] [link] [tunel] 
+
+--nameRegion :: Region -> String -> Region
+--nameRegion (Reg cities links tunnels _) newName = Reg cities links tunnels newName
 
 foundR :: Region -> City -> Region -- agrega una nueva ciudad a la región
-foundR (c1 (Lin c1 c2) q tunel) c2 = Reg [c1,c2] [Lin c1 c2 q] [tunel]
-
-newR :: Region
-newR = Reg [] [] [] ""
-
-nameRegion :: Region -> String -> Region
-nameRegion (Reg cities links tunnels _) newName = Reg cities links tunnels newName
-
-foundR :: Region -> City -> Region -- agrega una nueva ciudad a la región
-foundR (Reg cities links tunnels name) newCity = Reg (newCity : cities) links tunnels name
-
-
+foundR (Reg cities links tunnels) newCity = Reg (newCity : cities) links tunnels 
 
 
 linkR :: Region -> City -> City -> Quality -> Region -- enlaza dos ciudades de la región con un enlace de la calidad indicada
