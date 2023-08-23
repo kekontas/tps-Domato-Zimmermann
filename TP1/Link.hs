@@ -10,7 +10,6 @@ newL c1 c2 q1 = if c1 == c2 then error "Las ciudades deben ser distintas"
                else Lin c1 c2 q1
 
                
-
 connectsL :: City -> Link -> Bool   -- indica si esta ciudad es parte de este link
 connectsL c1 (Lin c2 c3 q) = (c1 == c2) || (c1 == c3)
 
