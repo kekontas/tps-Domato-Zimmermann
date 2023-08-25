@@ -30,17 +30,23 @@ addLink (Reg cities links tunels) link = Reg cities (link:links) tunels
 addCity :: Region -> City -> Region
 addCity (Reg cities links tunels) city = Reg (city:cities) links tunels
 
-
 tunelR :: Region -> [ City ] -> Region -- genera una comunicación entre dos ciudades distintas de la región
-tunelR region1 [city1, city2] | canTunelR region1 city1 city2 = addTunel region1 (newT (regionLinks region1))
-                              | otherwise = error "No se puede crear un tunel entre estas ciudades"
+tunelR (Reg cities links tunnels) cities1 = Reg cities links ((newT (getLinks (Reg cities links tunnels) cities1 )): tunnels)
+
+getLinks ::Region -> [City] -> [Link]
+getLinks region  (c1:c2:cs) = if linkedR region c1 c2 then whichLink region c1 c2 : getLinks region (c2:cs)
+                              else error "las ciudades no pueden ser conectadas"
+getLinks region (c1:[]) = []
+
+whichLink :: Region -> City -> City -> Link
+whichLink (Reg cities (l1:ls) tunnels) city1 city2 = if linksL city1 city2 l1 then l1
+                                                     else whichLink (Reg cities ls tunnels) city1 city2
+
+whichLink (Reg cities [] _) city1 city2 = error "Las ciudades no estan conectadas."                                                     
+
 
 addTunel :: Region -> Tunel -> Region
 addTunel (Reg cities links tunels) tunel = Reg cities links (tunel:tunels)
-
-canTunelR :: Region -> City -> City -> Bool 
-canTunelR (Reg cities links tunels) city1 city2 | connectsT city1 city2 (newT links) && inRegion city1 (Reg cities links tunels) && inRegion city2 (Reg cities links tunels) = True
-                                                | otherwise = error "No se puede crear un tunel entre estas ciudades"
 
 connectedR :: Region -> City -> City -> Bool -- indica si estas dos ciudades estan conectadas por un tunel
 connectedR (Reg cities links tunels) city1 city2 = any (connectsT city1 city2) tunels
@@ -52,6 +58,7 @@ linkedR (Reg cities links tunels) city1 city2 = any (linksL city1 city2) links
 buscarT :: City -> City -> [Tunel] -> Tunel
 buscarT city1 city2 (tunel:tunels) | connectsT city1 city2 tunel = tunel
                                    | otherwise = buscarT city1 city2 tunels
+buscarT city1 city2 [] = error "no existe el tunel"
 
 delayR :: Region -> City -> City -> Float -- dadas dos ciudades conectadas, indica la demora
 delayR (Reg cities links tunels) city1 city2 = delayT (buscarT city1 city2 tunels)
@@ -76,13 +83,6 @@ inRegion city (Reg [] links tunels) = False
 
 sameCity :: City -> City -> Bool
 sameCity city1 city2 = (nameC city1 == nameC city2) && (distanceC city1 city2 == 0)
-
-
-
-
-
-whichLink :: Region -> City -> City -> Link -- indica el enlace que conecta dos ciudades, si es que existe
-whichLink (Reg cities links tunnels) city1 city2 = if linkedR (Reg cities links tunnels) city1 city2 then head (filter (linksL city1 city2) links) else error "No estan conectadas"
 
 regionCities :: Region -> [City]
 regionCities (Reg cities links tunels) = cities
