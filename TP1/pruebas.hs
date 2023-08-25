@@ -27,8 +27,17 @@ t1 = newT [laBoca_nunez, nuñez_Caballito, laboca_Caballito]
 
 --Regions:
 r1 = newR
+r2 = foundR r1 laBoca
+r3 = foundR r2 nuñez
+r4 = foundR r3 caballito
+r5 = foundR r4 bsas
+l1 = linkR r1 laBoca nuñez q1
+l2 = linkR l1 nuñez caballito q2
+l3 = linkR l2 caballito bsas q3
+--t2 = tunelR l3 [laBoca, bsas]
 
 --Tests:
+
 
 
 
