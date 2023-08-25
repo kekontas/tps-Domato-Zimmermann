@@ -49,12 +49,24 @@ connectedR (Reg cities links tunels) city1 city2 = any (connectsT city1 city2) t
 linkedR :: Region -> City -> City -> Bool -- indica si estas dos ciudades estan enlazadas
 linkedR (Reg cities links tunels) city1 city2 = any (linksL city1 city2) links
 
+buscarT :: City -> City -> [Tunel] -> Tunel
+buscarT city1 city2 (tunel:tunels) | connectsT city1 city2 tunel = tunel
+                                   | otherwise = buscarT city1 city2 tunels
 
---delayR :: Region -> City -> City -> Float -- dadas dos ciudades conectadas, indica la demora
+delayR :: Region -> City -> City -> Float -- dadas dos ciudades conectadas, indica la demora
+delayR (Reg cities links tunels) city1 city2 = delayT (buscarT city1 city2 tunels)
+
+buscarL :: City -> City -> [Link] -> Link
+buscarL city1 city2 (link:links) | linksL city1 city2 link = link
+                                 | otherwise = buscarL city1 city2 links
+
+contarTenL :: Link -> [Tunel] -> Int
+contarTenL link1 [] = 0
+contarTenL link1 (tunel:tunels) | usesT link1 tunel = 1 + contarTenL link1 tunels
 
 
 availableCapacityForR :: Region -> City -> City -> Int -- indica la capacidad disponible entre dos ciudades
-availableCapacityForR (Reg cities links tunels) city1 city2 = 1
+availableCapacityForR (Reg cities links tunels) city1 city2 | linkedR (Reg cities links tunels) city1 city2 = capacityL (buscarL city1 city2 links) - contarTenL (buscarL city1 city2 links) tunels
 
 
 inRegion :: City -> Region -> Bool
@@ -64,7 +76,6 @@ inRegion city (Reg [] links tunels) = False
 
 sameCity :: City -> City -> Bool
 sameCity city1 city2 = (nameC city1 == nameC city2) && (distanceC city1 city2 == 0)
-
 
 
 
