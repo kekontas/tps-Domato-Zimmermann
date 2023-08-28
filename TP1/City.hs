@@ -15,6 +15,5 @@ pointC :: City -> Point
 pointC (Cit name loc) = loc
 
 distanceC :: City -> City -> Float
-distanceC c1 c2 | c1 == c2 = error "las ciudades son iguales"
-                | otherwise = difP  (pointC c1) (pointC c2)
+distanceC c1 c2 = difP  (pointC c1) (pointC c2)
 

@@ -1,4 +1,4 @@
-module Region ( Region, newR, foundR, linkR , {- tunelR, -} connectedR, linkedR{- , delayR -}, availableCapacityForR)
+module Region ( Region, newR, foundR, linkR , tunelR, connectedR, linkedR, delayR, availableCapacityForR)
    where
 
 import Point
@@ -39,14 +39,14 @@ getLinks region  (c1:c2:cs) = if linkedR region c1 c2 then whichLink region c1 c
 getLinks region (c1:[]) = []
 
 whichLink :: Region -> City -> City -> Link
-whichLink (Reg cities (l1:ls) tunnels) city1 city2 = if linksL city1 city2 l1 then l1
-                                                     else whichLink (Reg cities ls tunnels) city1 city2
+whichLink (Reg cities (l1:ls) tunnels) city1 city2 =  if linksL city1 city2 l1 
+                                                      then if availableCapacityForR (Reg cities (l1:ls) tunnels) city1 city2 > 0
+                                                           then l1
+                                                           else error "No hay capacidad disponible entre esas ciudades."
+                                                      else whichLink (Reg cities ls tunnels) city1 city2
 
 whichLink (Reg cities [] _) city1 city2 = error "Las ciudades no estan conectadas."                                                     
 
-
-addTunel :: Region -> Tunel -> Region
-addTunel (Reg cities links tunels) tunel = Reg cities links (tunel:tunels)
 
 connectedR :: Region -> City -> City -> Bool -- indica si estas dos ciudades estan conectadas por un tunel
 connectedR (Reg cities links tunels) city1 city2 = any (connectsT city1 city2) tunels
@@ -74,6 +74,7 @@ contarTenL link1 (tunel:tunels) | usesT link1 tunel = 1 + contarTenL link1 tunel
 
 availableCapacityForR :: Region -> City -> City -> Int -- indica la capacidad disponible entre dos ciudades
 availableCapacityForR (Reg cities links tunels) city1 city2 | linkedR (Reg cities links tunels) city1 city2 = capacityL (buscarL city1 city2 links) - contarTenL (buscarL city1 city2 links) tunels
+                                                            | otherwise = error "Las ciudades no estan conectadas"
 
 
 inRegion :: City -> Region -> Bool
@@ -95,22 +96,3 @@ regionTunnels (Reg cities links tunnels) = tunnels
 
 areConnectedbyLinks :: Region -> City -> City -> Bool
 areConnectedbyLinks (Reg cities links tunels) city1 city2 = connectsT city1 city2 (newT links)
--- Tests
-laBoca = newC "laboca" (newP 1 2) 
-nuñez = newC "nuñez" (newP 1 3) 
-caballito = newC "caballito" (newP 1 4)
-bsas = newC "bsas" (newP 1 5)
---Qualities:
-
-q1 = newQ "Cobre" 18 0.5 
-q2 = newQ "Fibra" 100 0.1
-q3 = newQ "oro" 1 0.2
-
---Links:
-
---Tunels:
-
---Regions:
---r1 = newR
-
-r1 = ( linkR ( linkR (foundR ( foundR ( foundR ( foundR newR laBoca) nuñez ) caballito ) bsas ) laBoca nuñez q1 ) nuñez caballito q2 ) 
