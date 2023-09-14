@@ -1,34 +1,27 @@
-import java.util.ArrayList;
-import java.util.List;
 public class Queue {
-  private final List<Object> cargoList = new ArrayList<Object>();
+
+  public QueueState queue1 = new EmptyQueue();
   public boolean isEmpty() {
-      return cargoList.isEmpty();
+      return queue1.isEmpty();
   }
 
   public Queue add( Object  cargo ) {
-      cargoList.add(cargo);
+      queue1 = queue1.add(cargo);
       return this;
   }
 
   public Object take() {
-      isCargoEmpty();
-      return cargoList.remove(0);
+      Object info = queue1.head();
+      queue1 = (QueueState) queue1.take();
+
+      return info;
   }
 
-  private void isCargoEmpty() {
-      if (cargoList.isEmpty()) {
-          throw new Error("Queue is empty");
-        }
-    }
 
-  public Object head() {
-      isCargoEmpty();
-      return cargoList.get(0);
-  }
+  public Object head() { return queue1.head(); }
 
   public int size() {
-		return cargoList.size();
+		return queue1.size();
   }
 
 }
