@@ -1,3 +1,5 @@
+package test;
+
 public class NonEmptyQueue extends QueueState {
     NonEmptyQueue(Object element, QueueState prevQueue) {
         this.element = element;

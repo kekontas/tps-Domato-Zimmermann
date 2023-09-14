@@ -1,3 +1,5 @@
+package test;
+
 public class Queue {
 
   public QueueState queue1 = new EmptyQueue();

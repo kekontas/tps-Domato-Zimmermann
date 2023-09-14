@@ -1,3 +1,5 @@
+package test;
+
 public class EmptyQueue extends QueueState {
     @Override
     public boolean isEmpty() {
@@ -23,7 +25,7 @@ public class EmptyQueue extends QueueState {
     }
 
     private void emptyQueueError() {
-        throw new Error("Queue is empty");
+        throw new Error("test.Queue is empty");
     }
 
 }

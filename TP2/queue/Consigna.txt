@@ -1,7 +1,7 @@
-El objetivo es ejercitar polimorfismo implementando un Queue.
+El objetivo es ejercitar polimorfismo implementando un test.Queue.
 
 Hay que hacer pasar todos los tests del ejercicio.
-La implementación del Queue no debe tener if.
+La implementación del test.Queue no debe tener if.
 Deben aplicar todas las tecnicas de mojora vistas en clase
 No se pueden modificar los tests.
 

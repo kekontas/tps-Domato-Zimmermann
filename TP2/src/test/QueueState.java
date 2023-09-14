@@ -1,3 +1,5 @@
+package test;
+
 public abstract class QueueState {
     public Object element;
     public QueueState prevQueue;
