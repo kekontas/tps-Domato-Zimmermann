@@ -13,36 +13,33 @@ public class QueueTest {
 
   @Test
   public void test02AddElementsToTheQueue() {
-    assertFalse(new Queue().add("Something").isEmpty());
+    assertFalse( CreateQueueWithParameter("Something").isEmpty());
   }
 
   @Test
   public void test03AddedElementsIsAtHead() {
-    Queue queue = new Queue().add("Something");
+    Queue queue = CreateQueueWithParameter("Something");
     assertEquals("Something", queue.head());
   }
 
   @Test
   public void test04TakeRemovesElementsFromTheQueue() {
-    Queue queue = new Queue().add("Something");
+    Queue queue = CreateQueueWithParameter("Something");
     queue.take();
     assertTrue(queue.isEmpty());
   }
 
   @Test
   public void test05TakeReturnsLastAddedObject() {
-    Queue queue = new Queue();
-    String addedObject = "Something";
-    queue.add(addedObject);
-    assertEquals(addedObject, queue.take());
+    Queue queue = CreateQueueWithParameter("Something");
+    assertEquals("Something", queue.take());
   }
 
   @Test
   public void test06QueueBehavesFIFO() {
-    Queue queue = new Queue();
     String firstAddedObject = "First";
     String secondAddedObject = "Second";
-    queue.add(firstAddedObject);
+    Queue queue = CreateQueueWithParameter(firstAddedObject);
     queue.add(secondAddedObject);
     assertEquals(firstAddedObject, queue.take());
     assertEquals(secondAddedObject, queue.take());
@@ -51,17 +48,15 @@ public class QueueTest {
 
   @Test
   public void test07HeadReturnsFirstAddedObject() {
-    Queue queue = new Queue();
     String firstAddedObject = "First";
-    queue.add(firstAddedObject);
+    Queue queue = CreateQueueWithParameter(firstAddedObject);
     queue.add("Second");
     assertEquals(firstAddedObject, queue.head());
   }
 
   @Test
   public void test08HeadDoesNotRemoveObjectFromQueue() {
-    Queue queue = new Queue();
-    queue.add("Something");
+    Queue queue = CreateQueueWithParameter("Something");
     assertEquals(1, queue.size());
     queue.head();
     assertEquals(1, queue.size());
@@ -69,7 +64,7 @@ public class QueueTest {
 
   @Test
   public void test09SizeRepresentsObjectInTheQueue() {
-    assertEquals(2, new Queue().add("First").add("Second").size());
+    assertEquals(2, CreateQueueWithParameter("First").add("Second").size());
   }
 
   @Test
@@ -80,8 +75,7 @@ public class QueueTest {
 
   @Test
   public void test11CanNotTakeWhenQueueIsEmptyAfterHavingObjects() {
-    Queue queue = new Queue();
-    queue.add("Something");
+    Queue queue = CreateQueueWithParameter("Something");
     queue.take();
     assertThrows(Error.class, queue::take);
   }
@@ -90,5 +84,11 @@ public class QueueTest {
   public void test12CanNotHeadWhenQueueIsEmpty() {
     Queue queue = new Queue();
     assertThrows(Error.class, queue::head);
+  }
+
+  private static Queue CreateQueueWithParameter(String parameter) {
+    Queue queue = new Queue();
+    queue.add(parameter);
+    return queue;
   }
 }
