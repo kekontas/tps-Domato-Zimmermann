@@ -9,40 +9,75 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 public class NemoTests {
-    @Test public void test00InitialConditionsAreZero() {
+    @Test
+    public void test00InitialConditionsAreZero() {
         Nemo nemo = new Nemo();
         assertEquals(0, nemo.getDepth());
         assertEquals("east", nemo.getDirection());
         assertEquals(0, nemo.getX());
         assertEquals(0, nemo.getY());
     }
-    @Test public void test01MoveWithNoParametersDoesNotMove() {
+
+    @Test
+    public void test01MoveWithNoParametersDoesNotMove() {
         Nemo nemo = new Nemo();
-        nemo.move("");
+        nemo.comand("");
         assertEquals(0, nemo.getDepth());
         assertEquals("east", nemo.getDirection());
         assertEquals(0, nemo.getX());
         assertEquals(0, nemo.getY());
     }
-    @Test public void test02MovesDown(){
+
+    @Test
+    public void test02MovesDown() {
         Nemo nemo = new Nemo();
-        nemo.move("d");
+        nemo.comand("d");
         assertEquals(-1, nemo.getDepth());
     }
-    @Test public void test03MoveWithOneParameterMovesForward() {
+
+    @Test
+    public void test03MovesUp() {
         Nemo nemo = new Nemo();
-        nemo.move("f");
+        nemo.comand("u");
+        assertEquals(1, nemo.getDepth());
+    }
+
+    @Test
+    public void test04MoveWithOneParameterMovesForward() {
+        Nemo nemo = new Nemo();
+        nemo.comand("f");
         assertEquals(0, nemo.getDepth());
         assertEquals("east", nemo.getDirection());
         assertEquals(1, nemo.getX());
         assertEquals(0, nemo.getY());
     }
-    @Test public void test04MoveWithOppositeParametersStaysTheSame() {
+
+    @Test
+    public void test05MoveWithOppositeParametersStaysTheSame() {
         Nemo nemo = new Nemo();
-        nemo.move("fllf");
+        nemo.comand("fllf");
         assertEquals(0, nemo.getDepth());
         assertEquals("west", nemo.getDirection());
         assertEquals(0, nemo.getX());
         assertEquals(0, nemo.getY());
     }
+
+    @Test
+    public void test06NemoThrowsCapsuleCorrectly() {
+        Nemo nemo = new Nemo();
+        nemo.comand("u");
+        nemo.comand("m");
+        assertTrue(nemo.CapsulaIsThrown);
+    }
+    @Test public void test07NemoCantShotCapsuleatAnyDepth() {
+        Nemo nemo = new Nemo();
+        assertEquals( Nemo.CantThrowCapsule,
+                assertThrows( RuntimeException.class, () -> nemo.comand("m")).getMessage() );
+    }
 }
+    /*@Test public void test0NSubmarineCantAscendMore() {
+        Nemo nemo = new Nemo();
+        assertEquals( Nemo.CantAscendMore,
+                assertThrows( RuntimeException.class, () -> nemo.comand("uu")).getMessage() );
+    }
+*/

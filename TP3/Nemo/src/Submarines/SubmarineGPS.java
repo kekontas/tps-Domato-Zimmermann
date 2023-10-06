@@ -6,24 +6,30 @@ public class SubmarineGPS {
     public int depth = 0;
 
 
-    public SubmarineGPS() {}
-    public int getDepth(){
+    public SubmarineGPS() {
+    }
+
+    public int getDepth() {
         return depth;
     }
-    public int getX(){
+
+    public int getX() {
         return x;
     }
-    public int getY(){
+
+    public int getY() {
         return y;
     }
 
-    public void moveUp(){
+    public void moveUp() {
         depth++;
     }
-    public void moveDown(){
+
+    public void moveDown() {
         depth--;
     }
-    public void moveForward(String direction){
+
+    public void moveForward(String direction) {
         if (direction == "east") {
             x++;
         } else if (direction == "west") {
@@ -34,6 +40,4 @@ public class SubmarineGPS {
             y--;
         }
     }
-
-
 }
