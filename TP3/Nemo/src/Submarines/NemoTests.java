@@ -5,15 +5,21 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+
 public class NemoTests {
+
+public Direction EAST;
+public Direction WEST;
+public Direction NORTH;
+public Direction SOUTH;
+
     @Test
     public void test00InitialConditionsAreZero() {
         Nemo nemo = new Nemo();
         assertEquals(0, nemo.getDepth());
-        assertEquals("east", nemo.getDirection());
+        assertEquals(EAST, nemo.getDirection());
         assertEquals(0, nemo.getX());
         assertEquals(0, nemo.getY());
     }
@@ -23,7 +29,7 @@ public class NemoTests {
         Nemo nemo = new Nemo();
         nemo.comand("");
         assertEquals(0, nemo.getDepth());
-        assertEquals("east", nemo.getDirection());
+        assertEquals(EAST, nemo.getDirection());
         assertEquals(0, nemo.getX());
         assertEquals(0, nemo.getY());
     }
@@ -47,7 +53,7 @@ public class NemoTests {
         Nemo nemo = new Nemo();
         nemo.comand("f");
         assertEquals(0, nemo.getDepth());
-        assertEquals("east", nemo.getDirection());
+        assertEquals(EAST, nemo.getDirection());
         assertEquals(1, nemo.getX());
         assertEquals(0, nemo.getY());
     }
@@ -57,7 +63,7 @@ public class NemoTests {
         Nemo nemo = new Nemo();
         nemo.comand("fllf");
         assertEquals(0, nemo.getDepth());
-        assertEquals("west", nemo.getDirection());
+        assertEquals(WEST, nemo.getDirection());
         assertEquals(0, nemo.getX());
         assertEquals(0, nemo.getY());
     }

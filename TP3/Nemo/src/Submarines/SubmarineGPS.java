@@ -1,6 +1,11 @@
 package Submarines;
 
 public class SubmarineGPS {
+    public East EAST;
+    public West WEST;
+    public North NORTH;
+    public South SOUTH;
+
     public int x = 0;
     public int y = 0;
     public int depth = 0;
@@ -28,15 +33,18 @@ public class SubmarineGPS {
     public void moveDown() {
         depth--;
     }
+    /*public void moveFowardX(){
+        x++;
+    }*/
 
-    public void moveForward(String direction) {
-        if (direction == "east") {
+    public void moveForward(Direction direction) {
+        if (direction.getDirection() == EAST) {
             x++;
-        } else if (direction == "west") {
+        } else if (direction.getDirection() == WEST) {
             x--;
-        } else if (direction == "north") {
+        } else if (direction.getDirection() == NORTH) {
             y++;
-        } else if (direction == "south") {
+        } else if (direction.getDirection() == SOUTH) {
             y--;
         }
     }

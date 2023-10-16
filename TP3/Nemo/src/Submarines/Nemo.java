@@ -3,14 +3,13 @@ package Submarines;
 
 public class Nemo {
     public SubmarineGPS coordinates;
-    public Direction direction;
+    public East EAST;
+    public Direction direction = EAST;
     public boolean CapsulaIsThrown = false;
    // static public String CantAscendMore = "El submarino no puede ascender mas";
     static public String CantThrowCapsule = "El submarino no puede lanzar la capsula, Nemo esta lleno de chocolate";
-
     public Nemo (){
-        coordinates = new SubmarineGPS();
-        direction = new Direction();
+        /*coordinates = new SubmarineGPS();*/
     }
 
     public void  comand(String parameters){
@@ -25,7 +24,7 @@ public class Nemo {
             } else if (c == 'd') {
                 coordinates.moveDown();
             } else if (c == 'f') {
-                coordinates.moveForward(getDirection());
+                coordinates.moveForward(direction);
             } else if (c == 'l') {
                 direction.changeOrientation('l');
             } else if (c == 'r') {
@@ -54,7 +53,7 @@ public class Nemo {
     public int getY(){
         return coordinates.getY();
     }
-    public String getDirection(){
-        return direction.getDirection();
+    public Direction getDirection(){
+        return direction;
     }
 }
