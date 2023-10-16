@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="cb1b1531-22d3-47db-aa1c-cb23649accfb" name="Changes" comment="capsula">
+      <change beforePath="$PROJECT_DIR$/Nemo/src/Submarines/Direction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Nemo/src/Submarines/Direction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Nemo/src/Submarines/Nemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Nemo/src/Submarines/Nemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Nemo/src/Submarines/NemoTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/Nemo/src/Submarines/NemoTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Nemo/src/Submarines/SubmarineGPS.java" beforeDir="false" afterPath="$PROJECT_DIR$/Nemo/src/Submarines/SubmarineGPS.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "history": [
+    {
+      "searchQuery": "push",
+      "state": "OPEN",
+      "assignee": "Sdomato"
+    }
+  ],
+  "lastFilter": {
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="d8e27c03-13c3-412a-a619-fe1d0b366eb6" />
+        <option name="url" value="https://github.com/kekontas/tps-Domato-Zimmermann.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2WPIt9Bh1ZzKTk5UvqpQaDiWACt" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "santino",
+    "last_opened_file_path": "C:/Users/andyd/OneDrive/Documentos/GitHub/tps-Domato-Zimmermann/TP3",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="JUnit.NemoTests.test04MoveWithOneParameterMovesForward">
+    <configuration name="NemoTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TP3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Submarines.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Submarines" />
+      <option name="MAIN_CLASS_NAME" value="Submarines.NemoTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NemoTests.test00InitialConditionsAreZero" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TP3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Submarines.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Submarines" />
+      <option name="MAIN_CLASS_NAME" value="Submarines.NemoTests" />
+      <option name="METHOD_NAME" value="test00InitialConditionsAreZero" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NemoTests.test04MoveWithOneParameterMovesForward" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TP3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Submarines.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Submarines" />
+      <option name="MAIN_CLASS_NAME" value="Submarines.NemoTests" />
+      <option name="METHOD_NAME" value="test04MoveWithOneParameterMovesForward" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NemoTests.test05MoveWithOppositeParametersStaysTheSame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TP3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Submarines.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Submarines" />
+      <option name="MAIN_CLASS_NAME" value="Submarines.NemoTests" />
+      <option name="METHOD_NAME" value="test05MoveWithOppositeParametersStaysTheSame" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NemoTests.test07NemoCantShotCapsuleatAnyDepth" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TP3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Submarines.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Submarines" />
+      <option name="MAIN_CLASS_NAME" value="Submarines.NemoTests" />
+      <option name="METHOD_NAME" value="test07NemoCantShotCapsuleatAnyDepth" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.NemoTests.test04MoveWithOneParameterMovesForward" />
+        <item itemvalue="JUnit.NemoTests.test00InitialConditionsAreZero" />
+        <item itemvalue="JUnit.NemoTests" />
+        <item itemvalue="JUnit.NemoTests.test05MoveWithOppositeParametersStaysTheSame" />
+        <item itemvalue="JUnit.NemoTests.test07NemoCantShotCapsuleatAnyDepth" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cb1b1531-22d3-47db-aa1c-cb23649accfb" name="Changes" comment="" />
+      <created>1696627999681</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1696627999681</updated>
+      <workItem from="1696628000693" duration="6303000" />
+      <workItem from="1697152659001" duration="11441000" />
+    </task>
+    <task id="LOCAL-00001" summary="capsula">
+      <option name="closed" value="true" />
+      <created>1696634311663</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1696634311663</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="santino" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="capsula" />
+    <option name="LAST_COMMIT_MESSAGE" value="capsula" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/Nemo/src/Submarines/NemoTests.java</url>
+          <line>51</line>
+          <properties class="Submarines.NemoTests" method="test04MoveWithOneParameterMovesForward">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
