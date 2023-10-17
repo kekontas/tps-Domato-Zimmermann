@@ -1,6 +1,6 @@
 package test;
 
-public abstract class QueueState {
+public abstract class  QueueState {
     public Object element;
     public QueueState prevQueue;
     public abstract boolean isEmpty();

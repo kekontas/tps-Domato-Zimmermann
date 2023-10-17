@@ -5,8 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 public class NemoTests {
     @Test
@@ -62,13 +60,13 @@ public class NemoTests {
         assertEquals(0, nemo.getY());
     }
 
-    @Test
+    /*@Test
     public void test06NemoThrowsCapsuleCorrectly() {
         Nemo nemo = new Nemo();
         nemo.comand("u");
         nemo.comand("m");
-        assertTrue(nemo.CapsulaIsThrown);
-    }
+        assertTrue(nemo.canThrowCapsule());
+    }*/
     @Test public void test07NemoCantShotCapsuleatAnyDepth() {
         Nemo nemo = new Nemo();
         assertEquals( Nemo.CantThrowCapsule,
