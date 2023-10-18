@@ -9,9 +9,12 @@ public class Depth extends Coordinates {
         depth.moveUp();
     }
     public void moveDown() {
-        depth.moveDown();
+        depth = depth.moveDown();
     }
     public int getValue() {
         return depth.getValue();
+    }
+    public void throwCapsule() {
+        depth.throwCapsule();
     }
 }

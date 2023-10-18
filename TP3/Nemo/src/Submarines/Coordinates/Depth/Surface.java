@@ -1,24 +1,24 @@
 package Submarines.Coordinates.Depth;
 
-import Submarines.Capsule.CanThrowCapsule;
+
 import Submarines.Capsule.CapsuleState;
+import Submarines.Capsule.ThrownCapsule;
 
 public class Surface extends DepthState{
-    public DepthState depth;
+    public CapsuleState capsule;
     public Surface (){
-
+        this.value = 0;
     }
+    @Override
     public DepthState moveUp() {
-        return new Surface();
-    }
-    public DepthState moveDown() {
-        depth = new FirstLevel();
         return this;
     }
-    public int getValue() {
-        return 0;
+    @Override
+    public DepthState moveDown() {
+        return new FirstLevel();
     }
-    public boolean canThrowCapsule() {
-        return new CanThrowCapsule().throwCapsule();
+    public CapsuleState throwCapsule() {
+        capsule = new ThrownCapsule();
+        return new ThrownCapsule();
     }
 }

@@ -1,5 +1,5 @@
 package Submarines.Capsule;
 
 public abstract class CapsuleState  {
-    public abstract boolean throwCapsule();
+    public abstract boolean isCapsuleThrown ();
 }

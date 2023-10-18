@@ -34,10 +34,10 @@ public class NemoTests {
     }
 
     @Test
-    public void test03MovesUp() {
+    public void test03CantBeAboveSurface() {
         Nemo nemo = new Nemo();
         nemo.comand("u");
-        assertEquals(1, nemo.getDepth());
+        assertEquals(0, nemo.getDepth());
     }
 
     @Test
@@ -60,17 +60,17 @@ public class NemoTests {
         assertEquals(0, nemo.getY());
     }
 
-    /*@Test
+    @Test
     public void test06NemoThrowsCapsuleCorrectly() {
         Nemo nemo = new Nemo();
         nemo.comand("u");
         nemo.comand("m");
-        assertTrue(nemo.canThrowCapsule());
-    }*/
+        assertTrue(nemo.isCapsuleThrown());
+    }
     @Test public void test07NemoCantShotCapsuleatAnyDepth() {
         Nemo nemo = new Nemo();
         assertEquals( Nemo.CantThrowCapsule,
-                assertThrows( RuntimeException.class, () -> nemo.comand("m")).getMessage() );
+                assertThrows( RuntimeException.class, () -> nemo.comand("ddm")).getMessage() );
     }
 }
     /*@Test public void test0NSubmarineCantAscendMore() {

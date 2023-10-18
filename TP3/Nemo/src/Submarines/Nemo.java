@@ -1,13 +1,15 @@
 package Submarines;
 import java.util.ArrayList;
 
-import Submarines.Capsule.CanThrowCapsule;
 import Submarines.Capsule.CapsuleState;
+import Submarines.Capsule.NotThrownCapsule;
 import Submarines.Commands.*;
 import Submarines.Coordinates.CoordX;
 import Submarines.Coordinates.CoordY;
 import Submarines.Coordinates.Coordinates;
 import Submarines.Coordinates.Depth.Depth;
+import Submarines.Coordinates.Depth.DepthState;
+import Submarines.Coordinates.Depth.Surface;
 import Submarines.Directions.Direction;
 import Submarines.Directions.East;
 
@@ -17,8 +19,8 @@ public class Nemo {
     public CoordY y;
     public Depth depth;
     public Direction direction;
+    public CapsuleState capsule;
 
-    public boolean CapsulaIsThrown = false;
    // static public String CantAscendMore = "El submarino no puede ascender mas";
     static public String CantThrowCapsule = "El submarino no puede lanzar la capsula, Nemo esta lleno de chocolate";
 
@@ -37,7 +39,7 @@ public class Nemo {
         availableCommands.add(new CommandR());
         availableCommands.add(new EmptyCommand());
         availableCommands.add(new CommandM());
-
+        capsule = new NotThrownCapsule();
     }
 
     public void  comand(String parameters){
@@ -74,5 +76,8 @@ public class Nemo {
     }
     public String getDirection(){
         return directions.get(directions.size()-1).getDirection();
+    }
+    public boolean isCapsuleThrown(){
+        return capsule.isCapsuleThrown();
     }
 }
