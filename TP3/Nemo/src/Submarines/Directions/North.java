@@ -3,10 +3,11 @@ package Submarines.Directions;
 import Submarines.Coordinates.CoordX;
 import Submarines.Coordinates.CoordY;
 import Submarines.Coordinates.Coordinates;
+import Submarines.Nemo;
 
 public class North extends Direction{
     public North(){}
-    public Coordinates y;
+
     @Override
     public Direction turnLeft(){
         return new West();
@@ -17,7 +18,7 @@ public class North extends Direction{
         return new East();
     }
     @Override
-    public void moveForward(CoordX x, CoordY y){y.moveUp();}
+    public void moveForward(Nemo nemo){nemo.y.moveUp();}
     @Override
     public String getDirection(){
         return "north";

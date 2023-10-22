@@ -18,7 +18,6 @@ public class Surface extends DepthState{
         return new FirstLevel();
     }
     public CapsuleState throwCapsule() {
-        capsule = new ThrownCapsule();
         return new ThrownCapsule();
     }
 }

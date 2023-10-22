@@ -4,12 +4,13 @@ import Submarines.Coordinates.CoordX;
 import Submarines.Coordinates.CoordY;
 import Submarines.Coordinates.Depth.Depth;
 import Submarines.Directions.Direction;
+import Submarines.Nemo;
 
 import java.util.ArrayList;
 
 public class EmptyCommand extends Commands{
     String type = "";
-    public void doYourThing(ArrayList<Direction> direction, CoordX x, CoordY y , Depth depth){
+    public void doYourThing(Nemo nemo){
         //do nothing
     }
     public boolean equalsType(char c){

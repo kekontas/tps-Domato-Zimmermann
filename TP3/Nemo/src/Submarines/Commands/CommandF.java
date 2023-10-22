@@ -4,6 +4,7 @@ import Submarines.Coordinates.CoordX;
 import Submarines.Coordinates.CoordY;
 import Submarines.Coordinates.Depth.Depth;
 import Submarines.Directions.Direction;
+import Submarines.Nemo;
 
 import java.util.ArrayList;
 
@@ -13,7 +14,7 @@ public class CommandF extends Commands{
     public boolean equalsType(char c){
         return type == c;
     }
-    public void doYourThing(ArrayList<Direction> directions, CoordX x, CoordY y , Depth depth){
-        directions.get(directions.size()-1).moveForward(x, y);
+    public void doYourThing(Nemo nemo){
+        nemo.directions.get(nemo.directions.size()-1).moveForward(nemo);
     }
 }

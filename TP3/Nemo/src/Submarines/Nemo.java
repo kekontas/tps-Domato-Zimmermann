@@ -8,8 +8,6 @@ import Submarines.Coordinates.CoordX;
 import Submarines.Coordinates.CoordY;
 import Submarines.Coordinates.Coordinates;
 import Submarines.Coordinates.Depth.Depth;
-import Submarines.Coordinates.Depth.DepthState;
-import Submarines.Coordinates.Depth.Surface;
 import Submarines.Directions.Direction;
 import Submarines.Directions.East;
 
@@ -42,26 +40,19 @@ public class Nemo {
         capsule = new NotThrownCapsule();
     }
 
-    public void  comand(String parameters){
-
-        for (int i = 0; i < parameters.length(); i++) {
-            char parameter = parameters.charAt(i);
-            availableCommands
-                    .stream()
-                    .filter(command -> command.equalsType(parameter))
-                    .forEach(command -> command.doYourThing(directions,x,y,depth));
-
-            //if (c == 'm') {
-              //  if (getDepth() == 1 || getDepth() == -1) {
-                    //CapsulaIsThrown = true;
-               // } else {
-                    //throw new RuntimeException(CantThrowCapsule);
-                //}
-            //} else {
-              //  throw new IllegalArgumentException("Invalid parameter");
-            //}
-
-        }
+    public void command(Character parameters) {
+        this.command(parameters.toString());
+    }
+    public void command(String parameters) {
+        parameters
+                .chars()
+                .forEach(parameter -> applyCommandToChar((char) parameter));
+    }
+    public void applyCommandToChar(char parameter){
+        availableCommands
+                .stream()
+                .filter(command -> command.equalsType(parameter))
+                .forEach(command -> command.doYourThing(this));
 
     }
 

@@ -20,7 +20,6 @@ public class Deep extends DepthState {
     }
 
     public CapsuleState throwCapsule() {
-        capsule = new ExplodedCapsule();
         return new ExplodedCapsule();
     }
 }

@@ -21,7 +21,7 @@ public class FirstLevel extends DepthState{
 
     @Override
     public CapsuleState throwCapsule() {
-         capsule = new ThrownCapsule();
+
          return new ThrownCapsule();
     }
 }

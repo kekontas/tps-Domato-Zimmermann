@@ -1,5 +1,6 @@
 package Submarines.Coordinates.Depth;
 
+import Submarines.Capsule.CapsuleState;
 import Submarines.Coordinates.Coordinates;
 
 public class Depth extends Coordinates {
@@ -14,7 +15,7 @@ public class Depth extends Coordinates {
     public int getValue() {
         return depth.getValue();
     }
-    public void throwCapsule() {
-        depth.throwCapsule();
+    public CapsuleState throwCapsule() {
+        return depth.throwCapsule();
     }
 }
