@@ -12,7 +12,7 @@ public class FirstLevel extends DepthState{
     }
     @Override
     public DepthState moveUp() {
-        return this.previousState;
+        return new Surface();
     }
     @Override
     public DepthState moveDown() {

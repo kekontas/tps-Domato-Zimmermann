@@ -17,7 +17,6 @@ public class CommandU extends Commands{
         return type == c;
     }
     public void doYourThing(Nemo nemo){
-
         nemo.depth.moveUp();
     }
 }

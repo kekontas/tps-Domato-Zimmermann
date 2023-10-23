@@ -7,7 +7,7 @@ public class Depth extends Coordinates {
     public DepthState depth = new Surface();
 
     public void moveUp() {
-        depth.moveUp();
+        depth=depth.moveUp();
     }
     public void moveDown() {
         depth = depth.moveDown();
