@@ -21,6 +21,6 @@ public class South extends Direction{
     public void moveForward(Nemo nemo){nemo.y.moveDown();}
     @Override
     public String getDirection(){
-        return "South";
+        return "south";
     }
 }
