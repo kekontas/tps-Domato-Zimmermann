@@ -1,49 +1,53 @@
 package linea;
-
+import java.util.Scanner;
 public class Game_4_en_linea {
-    public class Game {
 
-        public static void main( String[] args) throws Exception {
+    public static void main( String[] args) throws Exception {
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
 
-            System.out.println( "Dimensiones?");
+        System.out.println( "Dimensiones?");
 
-            Linea game = new Linea( prompt( "Base? " ), prompt( "Altura? " ), 'C' );
+        Linea game = new Linea( prompt( "Base? " ), prompt( "Altura? " ), 'C' );
 
 
+
+        System.out.println( game.show() );
+
+
+
+        while ( !game.finished() ) {
+
+            game.playRedAt( prompt( "Negras? " ) );
 
             System.out.println( game.show() );
 
 
 
-            while ( !game.finished() ) {
+            if ( !game.finished() ) {
 
-                game.playRedkAt( prompt( "Negras? " ) );
+                game.playBlueAt( prompt( "Blancas? " ) );
 
                 System.out.println( game.show() );
 
-
-
-                if ( !game.finished() ) {
-
-                    game.playBlueAt( prompt( "Blancas? " ) );
-
-                    System.out.println( game.show() );
-
-                }
-
             }
 
-
-
         }
 
-        private static int prompt( String message ) {
 
-            System.out.print( message );
-
-            return Integer.parseInt( System.console().readLine() );
-
-        }
 
     }
+    /*private static int prompt( String message ) {
+
+        System.out.print( message );
+
+        return Integer.parseInt( System.console().readLine() );
+
+    }*/
+    private static int prompt( String message ) {
+        System.out.print( message );
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextInt();
+    }
 }
+
