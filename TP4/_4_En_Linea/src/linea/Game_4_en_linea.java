@@ -37,17 +37,17 @@ public class Game_4_en_linea {
 
 
     }
-    /*private static int prompt( String message ) {
+    private static int prompt( String message ) {
 
         System.out.print( message );
 
         return Integer.parseInt( System.console().readLine() );
 
-    }*/
-    private static int prompt( String message ) {
+    }
+    /*//private static int prompt( String message ) {
         System.out.print( message );
         Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
-    }
+    }*/
 }
 

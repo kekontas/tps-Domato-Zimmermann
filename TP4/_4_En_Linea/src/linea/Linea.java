@@ -29,16 +29,26 @@ public class Linea {
         }
     }
 
-    public boolean show() {
-        for (int row = 0; row < numRows; row++) {
-            for (int col = 0; col < numCols; col++) {
-                System.out.print(board.get(col).get(row) + " ");
-            }
-            System.out.println(); // Nueva línea para la siguiente fila
-        }
-        return false;
-    }
 
+    public String show() {
+        StringBuilder mostrar = new StringBuilder();
+        for (int i = numRows -1; i >= 0; i--) {
+            mostrar.append("|");
+            for (int j = 0; j < numCols; j++) {
+                if (board.get(j).size() > i) {
+                    mostrar.append(board.get(j).get(i));
+                } else {
+                    mostrar.append(" ");
+                }
+                mostrar.append("|");
+            }
+            mostrar.append("\n");
+        }
+
+        mostrar.delete(mostrar.length() - 1, mostrar.length());
+
+        return mostrar.toString();
+}
     public boolean finished() {
         return checkWin() || isBoardFull();
     }
