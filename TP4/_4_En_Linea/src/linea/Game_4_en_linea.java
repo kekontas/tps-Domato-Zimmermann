@@ -18,7 +18,7 @@ public class Game_4_en_linea {
 
         while ( !game.finished() ) {
 
-            game.playRedAt( prompt( "Negras? " ) );
+            game.playNegroAt( prompt( "Negras? " ) );
 
             System.out.println( game.show() );
 
@@ -26,7 +26,7 @@ public class Game_4_en_linea {
 
             if ( !game.finished() ) {
 
-                game.playBlueAt( prompt( "Blancas? " ) );
+                game.playBlancoAt( prompt( "Blancas? " ) );
 
                 System.out.println( game.show() );
 
@@ -44,10 +44,6 @@ public class Game_4_en_linea {
         return Integer.parseInt( System.console().readLine() );
 
     }
-    /*//private static int prompt( String message ) {
-        System.out.print( message );
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextInt();
-    }*/
+
 }
 

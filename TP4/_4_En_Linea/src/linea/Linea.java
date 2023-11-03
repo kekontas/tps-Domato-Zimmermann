@@ -6,54 +6,33 @@ public class Linea {
     private List<List<Character>> board;
     int numRows;
     int numCols;
-    private char currentPlayer;
+    private TurnosState currentPlayer;
 
     public Linea(int numRows, int numCols, char gameMode) {
         this.numRows = numRows;
         this.numCols = numCols;
         this.board = new ArrayList<>();
+        this.currentPlayer = new JuegaNegro();
 
         for (int i = 0; i < numCols; i++) {
             List<Character> column = new ArrayList<>();
             for (int j = 0; j < numRows; j++) {
-                column.add('\0'); // Inicializa con caracteres nulos
+                column.add('\0');
             }
             this.board.add(column);
         }
 
-        if (gameMode == 'c') {
-            // Decide quién comienza el juego en función del modo
-            this.currentPlayer = 'R'; // Por ejemplo, 'R' para jugador rojo, 'B' para jugador azul
-        } else {
-            throw new IllegalArgumentException("Modo de juego no válido");
-        }
     }
 
 
-    public String show() {
-        StringBuilder mostrar = new StringBuilder();
-        for (int i = numRows -1; i >= 0; i--) {
-            mostrar.append("|");
-            for (int j = 0; j < numCols; j++) {
-                if (board.get(j).size() > i) {
-                    mostrar.append(board.get(j).get(i));
-                } else {
-                    mostrar.append(" ");
-                }
-                mostrar.append("|");
-            }
-            mostrar.append("\n");
-        }
-
-        mostrar.delete(mostrar.length() - 1, mostrar.length());
-
-        return mostrar.toString();
-}
     public boolean finished() {
         return checkWin() || isBoardFull();
     }
+    public char isPlayerAt(int col, int row) {
+        return board.get(col).get(row);
+    }
 
-    private boolean checkWin() {
+    boolean checkWin() {
         return checkHorizontalWin() || checkVerticalWin() || checkDiagonalWin();
     }
 
@@ -114,28 +93,29 @@ public class Linea {
         return false;
     }
 
-    private boolean isBoardFull() {
-        for (int col = 0; col < numCols; col++) {
-            if (board.get(col).contains('\0')) {
-                return false; // Todavía hay casillas vacías
-            }
+    public void playNegroAt(int col) {
+        if (currentPlayer.quienJuega() == 'R')
+            playAt(col, new JuegaNegro());
+        else{
+            throw new IllegalArgumentException("No es el turno de las negras");
         }
-        return true; // El tablero está lleno, empate
+
+    }
+    public void playBlancoAt(int col) {
+        if (currentPlayer.quienJuega() == 'B')
+            playAt(col, new JuegaBlanco());
+        else {
+            throw new IllegalArgumentException("No es el turno de las blancas");
+        }
     }
 
-    public void playRedAt(int col) {
-        playAt(col, 'R');
-    }
-
-    public void playBlueAt(int col) {
-        playAt(col, 'B');
-    }
-
-    private void playAt(int col, char player) {
+    private void playAt(int col, TurnosState player) {
         if (col < 0 || col >= numCols) {
             throw new IllegalArgumentException("Invalid column: " + col);
         }
-
+        if (finished()){
+            throw new IllegalArgumentException("El juego ya termino");
+        }
         List<Character> column = board.get(col);
 
         if (!column.contains('\0')) {
@@ -144,32 +124,44 @@ public class Linea {
 
         for (int row = numRows - 1; row >= 0; row--) {
             if (column.get(row) == '\0') {
-                column.set(row, player);
-                switchPlayer();
+                column.set(row, player.quienJuega());
+                currentPlayer = player.swichPlayer();
                 return;
             }
         }
     }
 
-    public boolean casilleroIsEmpty(int col, int row) {
-        return board.get(col).get(row) == '\0';
-    }
-
-    public char isPlayerAt(int col, int row) {
-        return board.get(col).get(row);
-    }
-
-    private void switchPlayer() {
-        if (currentPlayer == 'R') {
-            currentPlayer = 'B';
-        } else {
-            currentPlayer = 'R';
+    private boolean isBoardFull() {
+        for (int col = 0; col < numCols; col++) {
+            if (board.get(col).contains('\0')) {
+                return false;
+            }
         }
+        return true;
     }
 
-    public char winner() {
-        return currentPlayer;
+    public String show() {
+        StringBuilder mostrar = new StringBuilder();
+        for (int i = numRows -1; i >= 0; i--) {
+            mostrar.append("|");
+            for (int j = 0; j < numCols; j++) {
+                if (board.get(j).size() > i) {
+                    mostrar.append(board.get(j).get(i));
+                } else {
+                    mostrar.append(" ");
+                }
+                mostrar.append("|");
+            }
+            mostrar.append("\n");
+        }
+
+        mostrar.delete(mostrar.length() - 1, mostrar.length());
+
+        return mostrar.toString();
     }
+
+
+
 }
 
 
