@@ -1,29 +1,48 @@
 package linea;
+import linea.gamemodes.*;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 
 public class Linea {
     private List<List<Character>> board;
+    char emptyChar = '\0';
     int numRows;
     int numCols;
     private TurnosState currentPlayer;
+    GameMode gameMode;
+    public List<GameMode> gameModes = new ArrayList<>();
+
 
     public Linea(int numRows, int numCols, char gameMode) {
+
+        setGameMode(gameMode);
+        this.currentPlayer = new JuegaNegro();
+        if (numCols < 4 || numRows < 4) {
+            throw new IllegalArgumentException("Dimensiones invalidas, deben ser ambas mayores a 3");
+        }
         this.numRows = numRows;
         this.numCols = numCols;
-        this.board = new ArrayList<>();
-        this.currentPlayer = new JuegaNegro();
-
-        for (int i = 0; i < numCols; i++) {
-            List<Character> column = new ArrayList<>();
-            for (int j = 0; j < numRows; j++) {
-                column.add('\0');
-            }
-            this.board.add(column);
-        }
-
+        this.board = IntStream.range(0, this.numCols)
+                .mapToObj(i -> IntStream.range(0, this.numRows)
+                        .mapToObj(j -> emptyChar)
+                        .collect(Collectors.toList()))
+                .collect(Collectors.toList());
     }
 
+    public void setGameMode(char gameModeInput) {
+        gameModes.add(new GameModeA());
+        gameModes.add(new GameModeB());
+        gameModes.add(new GameModeC());
+        gameModes.add(new InvalidGameMode());
+        gameModes
+                .stream()
+                .filter(gm -> gm.equalsType(gameModeInput))
+                .forEach(gm -> this.gameMode = gm);
+    }
 
     public boolean finished() {
         return checkWin() || isBoardFull();
@@ -33,10 +52,10 @@ public class Linea {
     }
 
     boolean checkWin() {
-        return checkHorizontalWin() || checkVerticalWin() || checkDiagonalWin();
+        return gameMode.checkWin(this);
     }
 
-    private boolean checkHorizontalWin() {
+    public boolean checkHorizontalWin() {
         for (int row = 0; row < numRows; row++) {
             for (int col = 0; col <= numCols - 4; col++) {
                 char cell = board.get(col).get(row);
@@ -51,7 +70,7 @@ public class Linea {
         return false;
     }
 
-    private boolean checkVerticalWin() {
+    public boolean checkVerticalWin() {
         for (int row = 0; row <= numRows - 4; row++) {
             for (int col = 0; col < numCols; col++) {
                 char cell = board.get(col).get(row);
@@ -66,7 +85,7 @@ public class Linea {
         return false;
     }
 
-    private boolean checkDiagonalWin() {
+    public boolean checkDiagonalWin() {
         for (int row = 0; row <= numRows - 4; row++) {
             for (int col = 0; col <= numCols - 4; col++) {
                 char cell = board.get(col).get(row);
@@ -111,7 +130,7 @@ public class Linea {
 
     private void playAt(int col, TurnosState player) {
         if (col < 0 || col >= numCols) {
-            throw new IllegalArgumentException("Invalid column: " + col);
+            throw new IllegalArgumentException("Columna invalida, fuera de rango");
         }
         if (finished()){
             throw new IllegalArgumentException("El juego ya termino");
