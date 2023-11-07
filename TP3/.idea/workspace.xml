@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb1b1531-22d3-47db-aa1c-cb23649accfb" name="Changes" comment="capsula">
-      <change beforePath="$PROJECT_DIR$/Nemo/src/Submarines/Direction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Nemo/src/Submarines/Direction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nemo/src/Submarines/Nemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Nemo/src/Submarines/Nemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nemo/src/Submarines/NemoTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/Nemo/src/Submarines/NemoTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nemo/src/Submarines/SubmarineGPS.java" beforeDir="false" afterPath="$PROJECT_DIR$/Nemo/src/Submarines/SubmarineGPS.java" afterDir="false" />
-    </list>
+    <list default="true" id="cb1b1531-22d3-47db-aa1c-cb23649accfb" name="Changes" comment="capsula" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,17 +26,17 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "history": [
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;history&quot;: [
     {
-      "searchQuery": "push",
-      "state": "OPEN",
-      "assignee": "Sdomato"
+      &quot;searchQuery&quot;: &quot;push&quot;,
+      &quot;state&quot;: &quot;OPEN&quot;,
+      &quot;assignee&quot;: &quot;Sdomato&quot;
     }
   ],
-  "lastFilter": {
+  &quot;lastFilter&quot;: {
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -64,10 +59,11 @@
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
     "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "santino",
-    "last_opened_file_path": "C:/Users/andyd/OneDrive/Documentos/GitHub/tps-Domato-Zimmermann/TP3",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/kekozim/Workspace/Udesa/TPS-segundo-año/tps-Domato-Zimmermann/TP3",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -175,6 +171,7 @@
       <updated>1696627999681</updated>
       <workItem from="1696628000693" duration="6303000" />
       <workItem from="1697152659001" duration="11441000" />
+      <workItem from="1699312183738" duration="1551000" />
     </task>
     <task id="LOCAL-00001" summary="capsula">
       <option name="closed" value="true" />

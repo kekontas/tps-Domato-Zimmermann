@@ -160,21 +160,15 @@ public class Linea {
     }
 
     public String show() {
-        StringBuilder mostrar = new StringBuilder();
-        for (int i = numRows -1; i >= 0; i--) {
-            mostrar.append("|");
-            for (int j = 0; j < numCols; j++) {
-                if (board.get(j).size() > i) {
-                    mostrar.append(board.get(j).get(i));
-                } else {
-                    mostrar.append(" ");
-                }
-                mostrar.append("|");
-            }
-            mostrar.append("\n");
-        }
 
-        mostrar.delete(mostrar.length() - 1, mostrar.length());
+        StringBuilder mostrar = new StringBuilder();
+        IntStream.iterate(0, row -> row + 1).limit(numRows)
+                .forEach(row -> {
+                    mostrar.append("|");
+                    board.forEach(column -> mostrar.append("-").append(column.get(row)).append("-"));
+                    mostrar.append("|\n|").append("---".repeat(numCols)).append("|\n");
+                });
+
 
         return mostrar.toString();
     }
