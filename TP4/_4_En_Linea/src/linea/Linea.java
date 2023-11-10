@@ -12,17 +12,17 @@ public class Linea {
     char emptyChar = '\0';
     int numRows;
     int numCols;
-    private TurnosState currentPlayer;
+    private GameController currentPlayer;
     GameMode gameMode;
     public List<GameMode> gameModes = new ArrayList<>();
 
 
     public Linea(int numRows, int numCols, char gameMode) {
 
-        setGameMode(gameMode);
-        this.currentPlayer = new JuegaNegro();
+        this.gameMode = GameMode.setGameMode(gameMode);
+        this.currentPlayer = new JuegaAzul();
         if (numCols < 4 || numRows < 4) {
-            throw new IllegalArgumentException("Dimensiones invalidas, deben ser ambas mayores a 3");
+            throw new RuntimeException("Dimensiones invalidas, deben ser ambas mayores a 3");
         }
         this.numRows = numRows;
         this.numCols = numCols;
@@ -33,102 +33,93 @@ public class Linea {
                 .collect(Collectors.toList());
     }
 
-    public void setGameMode(char gameModeInput) {
-        gameModes.add(new GameModeA());
-        gameModes.add(new GameModeB());
-        gameModes.add(new GameModeC());
-        gameModes.add(new InvalidGameMode());
-        gameModes
-                .stream()
-                .filter(gm -> gm.equalsType(gameModeInput))
-                .forEach(gm -> this.gameMode = gm);
-    }
+
 
     public boolean finished() {
         return checkWin() || isBoardFull();
     }
-    public char isPlayerAt(int col, int row) {
+    public char isPlayerAt(int row, int col) {
+        if (isPlayerOutOfBounds(row , col)) {
+            return emptyChar;
+        }
         return board.get(col).get(row);
     }
+
+    public boolean isPlayerOutOfBounds( int row , int col) {
+        return col < 0 || col >= numCols || row < 0 || row >= numRows;
+    }
+
 
     boolean checkWin() {
         return gameMode.checkWin(this);
     }
 
     public boolean checkHorizontalWin() {
-        for (int row = 0; row < numRows; row++) {
-            for (int col = 0; col <= numCols - 4; col++) {
-                char cell = board.get(col).get(row);
-                if (cell != '\0' &&
-                        cell == board.get(col + 1).get(row) &&
-                        cell == board.get(col + 2).get(row) &&
-                        cell == board.get(col + 3).get(row)) {
-                    return true;
-                }
-            }
-        }
-        return false;
+        return IntStream.range(0, numRows)
+                .anyMatch(row ->
+                        IntStream.range(0, numCols - 3)
+                                .anyMatch(col ->
+                                        board.get(col).get(row) != '\0' &&
+                                        board.get(col).get(row) == board.get(col + 1).get(row) &&
+                                        board.get(col).get(row) == board.get(col + 2).get(row) &&
+                                        board.get(col).get(row) == board.get(col + 3).get(row)
+                                )
+                );
     }
 
     public boolean checkVerticalWin() {
-        for (int row = 0; row <= numRows - 4; row++) {
-            for (int col = 0; col < numCols; col++) {
-                char cell = board.get(col).get(row);
-                if (cell != '\0' &&
-                        cell == board.get(col).get(row + 1) &&
-                        cell == board.get(col).get(row + 2) &&
-                        cell == board.get(col).get(row + 3)) {
-                    return true;
-                }
-            }
-        }
-        return false;
+        return IntStream.range(0, numRows - 3)
+                .anyMatch(row ->
+                        IntStream.range(0, numCols)
+                                .anyMatch(col ->
+                                        board.get(col).get(row) != '\0' &&
+                                        board.get(col).get(row) == board.get(col).get(row + 1) &&
+                                        board.get(col).get(row) == board.get(col).get(row + 2) &&
+                                        board.get(col).get(row) == board.get(col).get(row + 3)
+                                )
+                );
     }
+
 
     public boolean checkDiagonalWin() {
-        for (int row = 0; row <= numRows - 4; row++) {
-            for (int col = 0; col <= numCols - 4; col++) {
-                char cell = board.get(col).get(row);
-                if (cell != '\0' &&
-                        cell == board.get(col + 1).get(row + 1) &&
-                        cell == board.get(col + 2).get(row + 2) &&
-                        cell == board.get(col + 3).get(row + 3)) {
-                    return true;
-                }
-            }
-        }
+        return IntStream.range(0, numRows - 3)
+                       .anyMatch(row ->
+                               IntStream.range(0, numCols - 3)
+                                       .anyMatch(col ->
+                                               board.get(col).get(row) != '\0' &&
+                                               board.get(col).get(row) == board.get(col + 1).get(row + 1) &&
+                                               board.get(col).get(row) == board.get(col + 2).get(row + 2) &&
+                                               board.get(col).get(row) == board.get(col + 3).get(row + 3)
+                                       ))
+                        ||
+               IntStream.range(0, numRows - 3)
+                       .anyMatch(row -> IntStream.range(3, numCols)
+                                       .anyMatch(col ->
+                                               board.get(col).get(row) != '\0' &&
+                                               board.get(col).get(row) == board.get(col - 1).get(row + 1) &&
+                                               board.get(col).get(row) == board.get(col - 2).get(row + 2) &&
+                                               board.get(col).get(row) == board.get(col - 3).get(row + 3)));
 
-        for (int row = 0; row <= numRows - 4; row++) {
-            for (int col = 3; col < numCols; col++) {
-                char cell = board.get(col).get(row);
-                if (cell != '\0' &&
-                        cell == board.get(col - 1).get(row + 1) &&
-                        cell == board.get(col - 2).get(row + 2) &&
-                        cell == board.get(col - 3).get(row + 3)) {
-                    return true;
-                }
-            }
-        }
-        return false;
+
     }
 
-    public void playNegroAt(int col) {
+    public void playRedAt(int col) {
         if (currentPlayer.quienJuega() == 'R')
-            playAt(col, new JuegaNegro());
+            playAt(col, new JuegaAzul());
         else{
-            throw new IllegalArgumentException("No es el turno de las negras");
+            throw new IllegalArgumentException("No es el turno de las Rojas");
         }
 
     }
-    public void playBlancoAt(int col) {
+    public void playBlueAt(int col) {
         if (currentPlayer.quienJuega() == 'B')
-            playAt(col, new JuegaBlanco());
+            playAt(col, new JuegaRojo());
         else {
-            throw new IllegalArgumentException("No es el turno de las blancas");
+            throw new IllegalArgumentException("No es el turno de las azules");
         }
     }
 
-    private void playAt(int col, TurnosState player) {
+    private void playAt(int col, GameController player) {
         if (col < 0 || col >= numCols) {
             throw new IllegalArgumentException("Columna invalida, fuera de rango");
         }
@@ -161,18 +152,27 @@ public class Linea {
 
     public String show() {
 
-        StringBuilder mostrar = new StringBuilder();
+        StringBuilder mostrar = new StringBuilder().append("\n");
         IntStream.iterate(0, row -> row + 1).limit(numRows)
                 .forEach(row -> {
-                    mostrar.append("|");
-                    board.forEach(column -> mostrar.append("-").append(column.get(row)).append("-"));
-                    mostrar.append("|\n|").append("---".repeat(numCols)).append("|\n");
+                    mostrar.append("||");
+                    board.forEach(column -> mostrar.append(" ").append(selectChar(row, column)).append(" "));
+                    mostrar.append("||\n");
                 });
-
+        mostrar.append("  ");
+        IntStream.iterate(0, col -> col + 1).limit(numCols)
+                .forEach(col -> mostrar.append(" ").append(col).append(" "));
+        mostrar.append("  ");
 
         return mostrar.toString();
     }
 
+    private Character selectChar(int row, List<Character> column) {
+        if (column.get(row) == '\0') {
+            return ' ';
+        }
+        return column.get(row);
+    }
 
 
 }
