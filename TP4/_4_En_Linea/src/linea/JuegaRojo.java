@@ -9,5 +9,8 @@ public class JuegaRojo extends GameController {
         return new JuegaAzul();
 
     }
+    public static void JuegaRojo(Linea linea, int col) {
+        linea.playAt(col, new JuegaRojo());
+    }
 
 }

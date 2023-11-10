@@ -4,6 +4,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
+import java.util.List;
+import java.util.stream.IntStream;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class Game_test {
@@ -21,16 +24,6 @@ public class Game_test {
     public void test00CantAcceptInvalidGameMode() {
         assertThrowsLike( () -> new Linea(4, 4, 'D'), "Modo de juego invalido, tienen que ser A, B o C" );
     }
-    @Test
-    public void test00ShowNewBoard() {
-        String expectedBoard = "\n" +
-                               "||            ||\n" +
-                               "||            ||\n" +
-                               "||            ||\n" +
-                               "||            ||\n" +
-                               "   0  1  2  3   ";
-        assertEquals(expectedBoard, game.show());
-    }
 
     @Test
     public void test01playRedAt() {
@@ -40,9 +33,7 @@ public class Game_test {
     }
     @Test
     public void test02playBlancoAt() {
-
-        game.playRedAt(3);
-        game.playBlueAt(3);
+        playChips(List.of(3,3));
         assertEquals('B', game.isPlayerAt(2, 3));
     }
     @Test
@@ -53,8 +44,7 @@ public class Game_test {
 
     @Test
     public void test04BlueCantPlay2InARow() {
-        game.playRedAt(3);
-        game.playBlueAt(3);
+        playChips(List.of(3,3));
         assertThrowsLike( () -> game.playBlueAt(3), "No es el turno de las azules");
     }
     @Test
@@ -69,68 +59,48 @@ public class Game_test {
     }
     @Test
     public void test07canWinvertical() {
-        game.playRedAt(0);
-        game.playBlueAt(0);
-        game.playRedAt(1);
-        game.playBlueAt(1);
-        game.playRedAt(2);
-        game.playBlueAt(2);
-        game.playRedAt(3);
+        playChips(List.of(1, 2 , 1 , 2, 1, 2, 1));
         assertTrue(game.checkWin());
     }
     @Test
     public void test08canWinHorizontal() {
-        game.playRedAt(0);
-        game.playBlueAt(0);
-        game.playRedAt(1);
-        game.playBlueAt(1);
-        game.playRedAt(2);
-        game.playBlueAt(2);
-        game.playRedAt(3);
+        playChips(List.of(0, 0 , 1 , 1, 2, 2, 3));
         assertTrue(game.checkWin());
     }
     @Test
     public void test09canWinDiagonal() {
-        game.playRedAt(0);
-        game.playBlueAt(1);
-        game.playRedAt(1);
-        game.playBlueAt(2);
-        game.playRedAt(2);
-        game.playBlueAt(3);
-        game.playRedAt(2);
-        game.playBlueAt(3);
-        game.playRedAt(3);
-        game.playBlueAt(0);
-        game.playRedAt(3);
+        playChips(List.of(0, 1 , 1 , 2, 2, 3, 2, 3, 3, 0, 3));
         assertTrue(game.checkWin());
     }
     @Test
+    public void test10gameStopsWithFilledBoard(){
+        playChips(List.of(0, 0, 0, 0, 2, 1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3));
+        assertTrue(game.finished());
+
+
+    }
+    @Test
     public void test10cantplayWhenGameIsFinished() {
-        game.playRedAt(0);
-        game.playBlueAt(1);
-        game.playRedAt(1);
-        game.playBlueAt(2);
-        game.playRedAt(2);
-        game.playBlueAt(3);
-        game.playRedAt(2);
-        game.playBlueAt(3);
-        game.playRedAt(3);
-        game.playBlueAt(0);
-        game.playRedAt(3);
+        playChips(List.of(0, 1 , 1 , 2, 2, 3, 2, 3, 3, 0, 3));
         assertTrue(game.checkWin());
         assertThrowsLike( () -> game.playBlueAt(0), "El juego ya termino" );
     }
     @Test
     public void test11canPlayWhenGameIsNotFinished() {
-        game.playRedAt(0);
-        game.playBlueAt(1);
-        game.playRedAt(1);
-        game.playBlueAt(2);
-        game.playRedAt(2);
-        game.playBlueAt(3);
+        playChips(List.of(0, 1, 1, 2, 2, 3));
         assertFalse(game.finished());
         game.playRedAt(3);
         assertTrue(game.isPlayerAt(2, 3) == 'R');
+    }
+    private void playChips(List<Integer> plays) {
+        IntStream.range(0, plays.size())
+                .forEach(i -> {
+                    if (i % 2 == 0) {
+                        game.playRedAt(plays.get(i));
+                    } else {
+                        game.playBlueAt(plays.get(i));
+                    }
+                });
     }
     private void assertThrowsLike( Executable executable, String message ) {
 

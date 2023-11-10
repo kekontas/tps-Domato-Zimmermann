@@ -14,7 +14,7 @@ public class Linea {
     int numCols;
     private GameController currentPlayer;
     GameMode gameMode;
-    public List<GameMode> gameModes = new ArrayList<>();
+
 
 
     public Linea(int numRows, int numCols, char gameMode) {
@@ -36,6 +36,10 @@ public class Linea {
 
 
     public boolean finished() {
+        if (checkWin()){
+            System.out.println("Ganador: " + currentPlayer.swichPlayer().quienJuega());
+        }
+
         return checkWin() || isBoardFull();
     }
     public char isPlayerAt(int row, int col) {
@@ -104,22 +108,26 @@ public class Linea {
     }
 
     public void playRedAt(int col) {
-        if (currentPlayer.quienJuega() == 'R')
+        GameController.JuegaRojo(this, col);
+        /*if (currentPlayer.quienJuega() == 'R')
             playAt(col, new JuegaAzul());
         else{
             throw new IllegalArgumentException("No es el turno de las Rojas");
-        }
-
+        }*/
     }
     public void playBlueAt(int col) {
-        if (currentPlayer.quienJuega() == 'B')
-            playAt(col, new JuegaRojo());
-        else {
-            throw new IllegalArgumentException("No es el turno de las azules");
-        }
+        GameController.JuegaAzul(this, col);
+
+    /*if (currentPlayer.quienJuega() == 'B')
+        playAt(col, new JuegaRojo());
+    else {
+        throw new IllegalArgumentException("No es el turno de las azules");
+
+    }
+    */
     }
 
-    private void playAt(int col, GameController player) {
+    void playAt(int col, GameController player) {
         if (col < 0 || col >= numCols) {
             throw new IllegalArgumentException("Columna invalida, fuera de rango");
         }
@@ -132,22 +140,26 @@ public class Linea {
             throw new IllegalArgumentException("Column is full: " + col);
         }
 
-        for (int row = numRows - 1; row >= 0; row--) {
-            if (column.get(row) == '\0') {
-                column.set(row, player.quienJuega());
-                currentPlayer = player.swichPlayer();
-                return;
-            }
-        }
+
+        IntStream.range(0, numRows)
+                .mapToObj(row -> numRows - 1 - row)  // Iterate in reverse order
+                .filter(row -> column.get(row) == '\0')
+                .findFirst()
+                .ifPresent(row -> {
+                    column.set(row, player.quienJuega());
+                    currentPlayer = player.swichPlayer();
+                });
     }
 
     private boolean isBoardFull() {
-        for (int col = 0; col < numCols; col++) {
-            if (board.get(col).contains('\0')) {
-                return false;
-            }
+        boolean isFull = IntStream.range(0, numCols)
+                .noneMatch(col -> board.get(col).contains('\0'));
+
+        if (isFull) {
+            System.out.println("Tablero lleno");
         }
-        return true;
+
+        return isFull;
     }
 
     public String show() {

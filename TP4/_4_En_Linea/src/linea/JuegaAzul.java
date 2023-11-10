@@ -9,4 +9,7 @@ public class JuegaAzul extends GameController {
     public GameController swichPlayer() {
         return new JuegaRojo();
     }
+    public static void JuegaAzul(Linea linea, int col){
+        linea.playAt(col, new JuegaAzul());
+    }
 }
