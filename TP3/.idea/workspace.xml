@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb1b1531-22d3-47db-aa1c-cb23649accfb" name="Changes" comment="capsula" />
+    <list default="true" id="cb1b1531-22d3-47db-aa1c-cb23649accfb" name="Changes" comment="capsula">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TP4/_4_En_Linea/src/linea/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TP4/_4_En_Linea/src/linea/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TP4/_4_En_Linea/src/linea/Game_test.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TP4/_4_En_Linea/src/linea/Game_test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TP4/_4_En_Linea/src/linea/JuegaAzul.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TP4/_4_En_Linea/src/linea/JuegaAzul.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TP4/_4_En_Linea/src/linea/JuegaRojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TP4/_4_En_Linea/src/linea/JuegaRojo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TP4/_4_En_Linea/src/linea/Linea.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TP4/_4_En_Linea/src/linea/Linea.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TP4/out/production/TP4/linea/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TP4/out/production/TP4/linea/GameController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TP4/out/production/TP4/linea/Game_test.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TP4/out/production/TP4/linea/Game_test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TP4/out/production/TP4/linea/JuegaAzul.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TP4/out/production/TP4/linea/JuegaAzul.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TP4/out/production/TP4/linea/JuegaRojo.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TP4/out/production/TP4/linea/JuegaRojo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TP4/out/production/TP4/linea/Linea.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TP4/out/production/TP4/linea/Linea.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,24 +65,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/kekozim/Workspace/Udesa/TPS-segundo-año/tps-Domato-Zimmermann/TP3",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/kekozim/Workspace/Udesa/TPS-segundo-año/tps-Domato-Zimmermann/TP3&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="JUnit.NemoTests.test04MoveWithOneParameterMovesForward">
     <configuration name="NemoTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="TP3" />
@@ -172,6 +184,7 @@
       <workItem from="1696628000693" duration="6303000" />
       <workItem from="1697152659001" duration="11441000" />
       <workItem from="1699312183738" duration="1551000" />
+      <workItem from="1699713496347" duration="758000" />
     </task>
     <task id="LOCAL-00001" summary="capsula">
       <option name="closed" value="true" />

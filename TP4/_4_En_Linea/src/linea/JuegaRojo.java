@@ -1,16 +1,22 @@
 package linea;
 
 public class JuegaRojo extends GameController {
+    public JuegaRojo(){}
     public char quienJuega() {
-        return 'B';
+        return 'R';
     }
     @Override
     public GameController swichPlayer() {
         return new JuegaAzul();
 
     }
-    public static void JuegaRojo(Linea linea, int col) {
+    @Override
+    public void juegaRojo(Linea linea, int col) {
         linea.playAt(col, new JuegaRojo());
+    }
+    @Override
+    public void juegaAzul(Linea linea, int col){
+       throw new RuntimeException("No es el turno de las azules");
     }
 
 }

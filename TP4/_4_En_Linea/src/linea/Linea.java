@@ -20,7 +20,7 @@ public class Linea {
     public Linea(int numRows, int numCols, char gameMode) {
 
         this.gameMode = GameMode.setGameMode(gameMode);
-        this.currentPlayer = new JuegaAzul();
+        this.currentPlayer = new JuegaRojo();
         if (numCols < 4 || numRows < 4) {
             throw new RuntimeException("Dimensiones invalidas, deben ser ambas mayores a 3");
         }
@@ -43,10 +43,10 @@ public class Linea {
         return checkWin() || isBoardFull();
     }
     public char isPlayerAt(int row, int col) {
-        if (isPlayerOutOfBounds(row , col)) {
+        if (isPlayerOutOfBounds(row -1, col-1)) {
             return emptyChar;
         }
-        return board.get(col).get(row);
+        return board.get(col -1 ).get(row - 1);
     }
 
     public boolean isPlayerOutOfBounds( int row , int col) {
@@ -108,46 +108,33 @@ public class Linea {
     }
 
     public void playRedAt(int col) {
-        GameController.JuegaRojo(this, col);
-        /*if (currentPlayer.quienJuega() == 'R')
-            playAt(col, new JuegaAzul());
-        else{
-            throw new IllegalArgumentException("No es el turno de las Rojas");
-        }*/
+        currentPlayer.juegaRojo(this, col);
     }
     public void playBlueAt(int col) {
-        GameController.JuegaAzul(this, col);
-
-    /*if (currentPlayer.quienJuega() == 'B')
-        playAt(col, new JuegaRojo());
-    else {
-        throw new IllegalArgumentException("No es el turno de las azules");
-
-    }
-    */
+        currentPlayer.juegaAzul(this, col);
     }
 
     void playAt(int col, GameController player) {
-        if (col < 0 || col >= numCols) {
+        if (col < 1 || col > numCols) {
             throw new IllegalArgumentException("Columna invalida, fuera de rango");
         }
         if (finished()){
             throw new IllegalArgumentException("El juego ya termino");
         }
-        List<Character> column = board.get(col);
+        List<Character> column = board.get(col - 1);
 
         if (!column.contains('\0')) {
             throw new IllegalArgumentException("Column is full: " + col);
         }
 
 
-        IntStream.range(0, numRows)
-                .mapToObj(row -> numRows - 1 - row)  // Iterate in reverse order
+        IntStream.range(0, numRows )
+                .mapToObj(row -> numRows -1 - row)  // Iterate in reverse order
                 .filter(row -> column.get(row) == '\0')
                 .findFirst()
                 .ifPresent(row -> {
                     column.set(row, player.quienJuega());
-                    currentPlayer = player.swichPlayer();
+                    this.currentPlayer = player.swichPlayer();
                 });
     }
 
@@ -172,7 +159,7 @@ public class Linea {
                     mostrar.append("||\n");
                 });
         mostrar.append("  ");
-        IntStream.iterate(0, col -> col + 1).limit(numCols)
+        IntStream.iterate(1, col -> col + 1).limit(numCols)
                 .forEach(col -> mostrar.append(" ").append(col).append(" "));
         mostrar.append("  ");
 

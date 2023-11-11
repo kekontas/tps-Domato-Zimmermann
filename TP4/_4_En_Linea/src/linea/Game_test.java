@@ -29,12 +29,13 @@ public class Game_test {
     public void test01playRedAt() {
 
         game.playRedAt(3);
-        assertEquals('R', game.isPlayerAt(3, 3));
+        game.show();
+        assertEquals('R', game.isPlayerAt(4, 3));
     }
     @Test
     public void test02playBlancoAt() {
         playChips(List.of(3,3));
-        assertEquals('B', game.isPlayerAt(2, 3));
+        assertEquals('B', game.isPlayerAt(3, 3));
     }
     @Test
     public void test03RedCantPlay2InARow() {
@@ -64,33 +65,33 @@ public class Game_test {
     }
     @Test
     public void test08canWinHorizontal() {
-        playChips(List.of(0, 0 , 1 , 1, 2, 2, 3));
+        playChips(List.of(1, 1 , 2 , 2, 3, 3, 4));
         assertTrue(game.checkWin());
     }
     @Test
     public void test09canWinDiagonal() {
-        playChips(List.of(0, 1 , 1 , 2, 2, 3, 2, 3, 3, 0, 3));
+        playChips(List.of(1, 2 , 2 , 3, 3, 4, 3, 4, 4, 1, 4));
         assertTrue(game.checkWin());
     }
     @Test
     public void test10gameStopsWithFilledBoard(){
-        playChips(List.of(0, 0, 0, 0, 2, 1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3));
+        playChips(List.of(1, 1, 1, 1, 3, 2, 2, 2, 2, 3, 3, 3, 4, 4, 4, 4));
         assertTrue(game.finished());
 
 
     }
     @Test
     public void test10cantplayWhenGameIsFinished() {
-        playChips(List.of(0, 1 , 1 , 2, 2, 3, 2, 3, 3, 0, 3));
+        playChips(List.of(1, 2 , 2 , 3, 3, 4, 3, 4, 4, 1, 4));
         assertTrue(game.checkWin());
-        assertThrowsLike( () -> game.playBlueAt(0), "El juego ya termino" );
+        assertThrowsLike( () -> game.playBlueAt(1), "El juego ya termino" );
     }
     @Test
     public void test11canPlayWhenGameIsNotFinished() {
-        playChips(List.of(0, 1, 1, 2, 2, 3));
+        playChips(List.of(1, 2, 2, 3, 3, 4));
         assertFalse(game.finished());
-        game.playRedAt(3);
-        assertTrue(game.isPlayerAt(2, 3) == 'R');
+        game.playRedAt(4);
+        assertTrue(game.isPlayerAt(3, 4) == 'R');
     }
     private void playChips(List<Integer> plays) {
         IntStream.range(0, plays.size())
