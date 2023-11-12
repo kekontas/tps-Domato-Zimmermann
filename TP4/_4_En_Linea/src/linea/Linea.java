@@ -15,8 +15,6 @@ public class Linea {
     private GameController currentPlayer;
     GameMode gameMode;
 
-
-
     public Linea(int numRows, int numCols, char gameMode) {
 
         this.gameMode = GameMode.setGameMode(gameMode);
@@ -33,13 +31,10 @@ public class Linea {
                 .collect(Collectors.toList());
     }
 
-
-
     public boolean finished() {
         if (checkWin()){
             System.out.println("Ganador: " + currentPlayer.swichPlayer().quienJuega());
         }
-
         return checkWin() || isBoardFull();
     }
     public char isPlayerAt(int row, int col) {
@@ -52,7 +47,6 @@ public class Linea {
     public boolean isPlayerOutOfBounds( int row , int col) {
         return col < 0 || col >= numCols || row < 0 || row >= numRows;
     }
-
 
     boolean checkWin() {
         return gameMode.checkWin(this);
@@ -84,7 +78,6 @@ public class Linea {
                 );
     }
 
-
     public boolean checkDiagonalWin() {
         return IntStream.range(0, numRows - 3)
                        .anyMatch(row ->
@@ -114,7 +107,7 @@ public class Linea {
         currentPlayer.juegaAzul(this, col);
     }
 
-    void playAt(int col, GameController player) {
+    public void playAt(int col, GameController player) {
         if (col < 1 || col > numCols) {
             throw new IllegalArgumentException("Columna invalida, fuera de rango");
         }
@@ -129,7 +122,7 @@ public class Linea {
 
 
         IntStream.range(0, numRows )
-                .mapToObj(row -> numRows -1 - row)  // Iterate in reverse order
+                .mapToObj(row -> numRows -1 - row)
                 .filter(row -> column.get(row) == '\0')
                 .findFirst()
                 .ifPresent(row -> {

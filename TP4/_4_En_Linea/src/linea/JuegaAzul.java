@@ -11,7 +11,6 @@ public class JuegaAzul extends GameController {
         return new JuegaRojo();
     }
     @Override
-
     public void juegaAzul(Linea linea, int col){
         linea.playAt(col, new JuegaAzul());
     }
