@@ -5,17 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cb1b1531-22d3-47db-aa1c-cb23649accfb" name="Changes" comment="capsula">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TP4/_4_En_Linea/src/linea/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TP4/_4_En_Linea/src/linea/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TP4/_4_En_Linea/src/linea/Game_test.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TP4/_4_En_Linea/src/linea/Game_test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TP4/_4_En_Linea/src/linea/JuegaAzul.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TP4/_4_En_Linea/src/linea/JuegaAzul.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TP4/_4_En_Linea/src/linea/JuegaRojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TP4/_4_En_Linea/src/linea/JuegaRojo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TP4/_4_En_Linea/src/linea/Linea.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TP4/_4_En_Linea/src/linea/Linea.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TP4/out/production/TP4/linea/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TP4/out/production/TP4/linea/GameController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TP4/out/production/TP4/linea/Game_test.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TP4/out/production/TP4/linea/Game_test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TP4/out/production/TP4/linea/JuegaAzul.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TP4/out/production/TP4/linea/JuegaAzul.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TP4/out/production/TP4/linea/JuegaRojo.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TP4/out/production/TP4/linea/JuegaRojo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TP4/out/production/TP4/linea/Linea.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TP4/out/production/TP4/linea/Linea.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,6 +175,7 @@
       <workItem from="1697152659001" duration="11441000" />
       <workItem from="1699312183738" duration="1551000" />
       <workItem from="1699713496347" duration="758000" />
+      <workItem from="1699815301680" duration="463000" />
     </task>
     <task id="LOCAL-00001" summary="capsula">
       <option name="closed" value="true" />

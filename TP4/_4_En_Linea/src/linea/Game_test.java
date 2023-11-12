@@ -20,11 +20,11 @@ public class Game_test {
         game3 = new Linea(4, 4, 'A');
     }
     @Test
-    public void test00CantCreateBoardWithWrongDimension() {
+    public void test00aCantCreateBoardWithWrongDimension() {
         assertThrowsLike( () -> new Linea(4, 3, 'C'), "Dimensiones invalidas, deben ser ambas mayores a 3" );
     }
     @Test
-    public void test00CantAcceptInvalidGameMode() {
+    public void test00bCantAcceptInvalidGameMode() {
         assertThrowsLike( () -> new Linea(4, 4, 'D'), "Modo de juego invalido, tienen que ser A, B o C" );
     }
 
@@ -78,14 +78,14 @@ public class Game_test {
         assertTrue(game.checkWin());
     }
     @Test
-    public void test10gameStopsWithFilledBoard(){
+    public void test10aameStopsWithFilledBoard(){
         playChips(List.of(1, 1, 1, 1, 3, 2, 2, 2, 2, 3, 3, 3, 4, 4, 4, 4), game);
         assertTrue(game.finished());
 
 
     }
     @Test
-    public void test10cantplayWhenGameIsFinished() {
+    public void test10bcantplayWhenGameIsFinished() {
         playChips(List.of(1, 2 , 2 , 3, 3, 4, 3, 4, 4, 1, 4),game);
         assertTrue(game.checkWin());
         assertThrowsLike( () -> game.playBlueAt(1), "El juego ya termino" );
@@ -98,19 +98,31 @@ public class Game_test {
         assertTrue(game.isPlayerAt(3, 4) == 'R');
     }
     @Test
-    public void testCantWinDiagonalInGameModeA() {
+    public void test12CantWinDiagonalInGameModeA() {
         playChips(List.of(1, 2 , 2 , 3, 3, 4, 3, 4, 4, 1, 4), game3);
         assertFalse(game3.checkWin());
     }
     @Test
-    public void testCantWinHorizontalInGameModeB() {
+    public void test13aCantWinHorizontalInGameModeB() {
         playChips(List.of(1, 1 , 2 , 2, 3, 3, 4), game2);
         assertFalse(game2.checkWin());
     }
     @Test
-    public void testCantWinVerticalInGameModeB() {
+    public void test13bCantWinVerticalInGameModeB() {
         playChips(List.of(1, 2 , 1 , 2, 1, 2,1), game2);
         assertFalse(game2.checkWin());
+    }
+    @Test
+    public void test14BoardPrintCorrectly() {
+        playChips(List.of(1, 2 , 1 , 2, 1, 2,1), game);
+        String expected = "\n" +
+                          "|| R          ||\n" +
+                          "|| R  B       ||\n" +
+                          "|| R  B       ||\n" +
+                          "|| R  B       ||\n" +
+                          "   1  2  3  4   ";
+        assertEquals(expected, game.show());
+
     }
     private void playChips(List<Integer> plays, Linea game) {
         IntStream.range(0, plays.size())
